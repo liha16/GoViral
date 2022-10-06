@@ -1,0 +1,8 @@
+<h1>Register a new user</h1>
+
+<form action="/users/create" method="POST">
+   <p>Username: <input required="true" type="text" name="username" placeholder="Enter your username here" /></p>
+    <p>Password: <input required="true" minlength="10" type="password" name="password" placeholder="Enter your password here" /></p>
+    <p>Repeat password: <input required="true" minlength="10" type="password" name="password2" placeholder="Repeat your password" /></p>
+    <input type="submit" value="Register" />
+</form>

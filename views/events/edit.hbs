@@ -1,0 +1,77 @@
+<h1>Edit <span class="boldtitle">Event.</span> </h1>
+
+{{#if viewData}}
+
+
+<form class="eventForm" name="updateEvent" action="/events/{{viewData.id}}/update" method="POST"  onsubmit="return validateUpdateEventForm()">
+    <h3>Title: *</h3>
+    <input required="true" type="text" name="title" value="{{viewData.title}}"/> <br>
+
+    <h3>Description: *</h3>
+    <textarea rows="15" cols="50" required="true" name="description">{{viewData.description}}</textarea><br>
+
+
+
+    <h3>Start day: *</h3>
+    Year: <input required="true" type="number" max="2030" min="2020" name="startyear" value="{{viewData.startyear}}"/> 
+    Month: <input required="true" type="number" max="12" min="1" name="startmonth" value="{{viewData.startmonth}}"/>
+    Day: <input required="true" type="number" max="31" min="1" name="startday" value="{{viewData.startday}}" /> 
+    Hour: <input required="true" type="number" max="23" min="0" name="starthour" value="{{viewData.starthour}}" /> 
+    Min: <input required="true" type="number" max="59" min="0" name="startmin" value="{{viewData.startmin}}"/> <br>
+
+   <h3>End day: *</h3>
+    Year: <input required="true" type="number" max="2030" min="2020" name="endyear" value="{{viewData.endyear}}"/> 
+    Month: <input required="true" type="number" max="12" min="1" name="endmonth" value="{{viewData.endmonth}}"/>
+    Day: <input required="true" type="number" max="31" min="1" name="endday" value="{{viewData.endday}}" /> 
+    Hour: <input required="true" type="number" max="23" min="0" name="endhour" value="{{viewData.endhour}}" /> 
+    Min: <input required="true" type="number" max="59" min="0" name="endmin" value="{{viewData.endmin}}"/> <br>
+
+    <h3>Location:</h3>
+
+    <p><input {{#if viewData.checked}}checked{{/if}} type="checkbox" id="globalevent" name="global"> <label for="globalevent"> Make global event</label>
+    </p>
+    <div id="location">
+    <p>Full Address:
+    <input type="text" name="address" value="{{viewData.address}}"/> <br></p>
+    <p>City:
+    <input type="text" name="city" value="{{viewData.city}}"/> <br></p>
+    <p>Country:
+    <input type="text" name="country" value="{{viewData.country}}"/> <br></p>
+    </div>
+
+    <h3>Category: </h3>
+    <label for="cat1">Choose a category: *</label><br>
+    <select name="cat1" id="cat1" required>
+    <option selected  value="{{viewData.cat1}}">{{viewData.cat1}}</option>
+    <option value="applause">Applause</option>
+    <option value="politics">Politics</option>
+    <option value="donation">Donation</option>
+    <option value="free">Free</option>
+    <option value="informative">Informative</option>
+    <option value="party">Party</option>
+    <option value="spiritual">Spiritual</option>
+    </select>
+    <br>
+    <label for="cat2">Choose another category or skip:</label><br>
+    <select name="cat2" id="cat2">
+    <option selected value="{{viewData.cat2}}">{{viewData.cat2}}</option>
+    <option value="applause">Applause</option>
+    <option value="politics">Politics</option>
+    <option value="donation">Donation</option>
+    <option value="free">Free</option>
+    <option value="informative">Informative</option>
+    <option value="party">Party</option>
+    <option value="spiritual">Spiritual</option>
+    </select>
+    <br>
+<!--
+    <h3>Image:</h3>
+    <input type="text" name="image" /><br>-->
+    <input type="hidden" name="id" value="{{viewData.id}}" />
+    <input class="button"  type="submit" value="Update event" />
+    
+</form>
+
+{{/if}}
+
+  <script type="text/javascript" src="/js/validate.min.js"></script>

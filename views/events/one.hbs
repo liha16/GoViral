@@ -1,0 +1,66 @@
+
+
+{{#if viewData}}
+  <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0"></script>
+
+
+<h1>{{viewData.startday}} <span class="boldtitle">{{viewData.title}}</span> </h1>
+
+<span class="separator">...</span>
+
+
+<div class="infobig">  
+    Start: {{viewData.startdate}} - {{viewData.starttime}} 
+    <br>
+    End: {{viewData.enddate}} - {{viewData.endtime}}
+     <br>
+    <a class="direction" title="{{viewData.mapsHrefTitle}}" href="{{viewData.mapsHref}}">
+    <i class="fa fa-map-marker"></i> {{viewData.address}}
+    </a>
+</div>
+
+<p>{{viewData.description}}</p>
+
+<div class="info">Created by: {{viewData.owner}}</div>
+
+{{#each viewData.categories}}
+    <a title="See category {{this}}" href="/events/category/{{this}}">
+    <div class="button"> {{this}}</div>
+    </a>
+{{/each}}
+<a title="{{viewData.city}}" href="/events/location/{{viewData.city}}">
+    <div class="button capitalize">{{viewData.city}}</div>
+    </a>
+
+
+    <div class="floatright socialicons">
+        
+        <a title="Share on Twitter!" id="twitterlink" data-id="{{viewData.id}}"  data-title="{{viewData.title}}">
+            <i class="fa fa-twitter fa-2x fa-fw" aria-hidden="true"></i>
+        </a>
+        <a title="Share on facebook!" id="facebooklink" target="_blank" data-id="{{viewData.id}}">
+            <i class="fa fa-facebook fa-2x fa-fw" aria-hidden="true"></i>
+        </a>
+        <a title="Like!" href="/events/like/{{viewData.id}}" data-id="{{viewData.id}}">
+        {{viewData.likes}}<i class="fa fa-heart fa-2x fa-fw" aria-hidden="true"></i>
+        </a>
+    </div>
+
+{{/if}}
+<hr>
+<a title="Back" id="back" href="#">
+    <div class="button backlink"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Back
+</div></a>
+
+{{#if viewData}}
+
+{{#if viewData.loggedIn}}
+
+
+<a title="Update this event" class="button floatright backlink" href="/events/{{viewData.id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+
+<a title="Remove this event" class="button floatright backlink"  href="/events/{{viewData.id}}/remove"><i class="fa fa-trash" aria-hidden="true"></i></a>
+{{/if}}
+{{/if}}
+

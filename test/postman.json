@@ -1,0 +1,948 @@
+{
+	"info": {
+		"_postman_id": "1a3854cf-6b20-46ef-9f1c-c77972a5c709",
+		"name": "GoViralEvents production",
+		"description": "The tests must me run in the order they are listed. Authorisations are inherited and an event variable is set to remember the id of the event being edited. ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register new user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "15e38aea-4a3c-4ec7-8522-ba1b7738e2f6",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bdfbe649-68a4-43c3-925f-321f3c6ade4f",
+						"exec": [
+							"pm.test(\"If flash message says registered\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"You are registered!\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "tester",
+							"type": "text"
+						},
+						{
+							"key": "surname",
+							"value": "postman",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "postmantester",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "postmantester@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						},
+						{
+							"key": "password2",
+							"value": "12345678",
+							"type": "text"
+						},
+						{
+							"key": "g-recaptcha-response",
+							"value": "captchaBypass",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://goviralevents.com/users/create",
+					"protocol": "https",
+					"host": [
+						"goviralevents",
+						"com"
+					],
+					"path": [
+						"users",
+						"create"
+					]
+				},
+				"description": "Adding a user to db"
+			},
+			"response": []
+		},
+		{
+			"name": "Log in",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9ff99ab1-dd23-4fcc-9a0a-98f07d981bdb",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Logged in successfully.\");",
+							"});",
+							"",
+							"pm.test(\"Session is set\", function () {",
+							"    pm.expect(pm.cookies.has('goviralevents')).to.be.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "postmantester",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "12345678",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://goviralevents.com/users/login",
+					"protocol": "https",
+					"host": [
+						"goviralevents",
+						"com"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				},
+				"description": "Log in as test user "
+			},
+			"response": []
+		},
+		{
+			"name": "Add event form",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8cea3b33-0f45-4ade-b163-8e31199d0208",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://goviralevents.com/events/add",
+					"protocol": "https",
+					"host": [
+						"goviralevents",
+						"com"
+					],
+					"path": [
+						"events",
+						"add"
+					]
+				},
+				"description": "Add event with login session inherited from \"Log in\""
+			},
+			"response": []
+		},
+		{
+			"name": "Add event OK",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5341ea9a-1e16-4ec7-9af1-c076b5b7dc67",
+						"exec": [
+							"pm.test(\"New event added\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"New event added!\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "Test postman event",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "A little test description",
+							"type": "text"
+						},
+						{
+							"key": "startdate",
+							"value": "Wed Aug 12 2020 10:47:03 GMT+0200 (Central European Summer Time)",
+							"type": "text"
+						},
+						{
+							"key": "enddate",
+							"value": "Thu Aug 13 2020 10:47:03 GMT+0200 (Central European Summer Time)",
+							"type": "text"
+						},
+						{
+							"key": "starthour",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "startmin",
+							"value": "00",
+							"type": "text"
+						},
+						{
+							"key": "endhour",
+							"value": "22",
+							"type": "text"
+						},
+						{
+							"key": "endmin",
+							"value": "00",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "Spain",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Barcelona",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "cat1",
+							"value": "Informative",
+							"type": "text"
+						},
+						{
+							"key": "cat2",
+							"value": "party",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://goviralevents.com/events/create",
+					"protocol": "https",
+					"host": [
+						"goviralevents",
+						"com"
+					],
+					"path": [
+						"events",
+						"create"
+					]
+				},
+				"description": "Add an event with correct fields"
+			},
+			"response": []
+		},
+		{
+			"name": "Add event FAIL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e778ebd6-b1ca-46fc-81ff-27c5e4c0ef1a",
+						"exec": [
+							"pm.test(\"New event added\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Could not save!\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "description",
+							"value": "A little test description",
+							"type": "text"
+						},
+						{
+							"key": "startdate",
+							"value": "Wed Aug 12 2020 10:47:03 GMT+0200 (Central European Summer Time)",
+							"type": "text"
+						},
+						{
+							"key": "enddate",
+							"value": "Thu Aug 13 2020 10:47:03 GMT+0200 (Central European Summer Time)",
+							"type": "text"
+						},
+						{
+							"key": "starthour",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "startmin",
+							"value": "00",
+							"type": "text"
+						},
+						{
+							"key": "endhour",
+							"value": "22",
+							"type": "text"
+						},
+						{
+							"key": "endmin",
+							"value": "00",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "Spain",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Barcelona",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "cat1",
+							"value": "Informative",
+							"type": "text"
+						},
+						{
+							"key": "cat2",
+							"value": "party",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://goviralevents.com/events/create",
+					"protocol": "https",
+					"host": [
+						"goviralevents",
+						"com"
+					],
+					"path": [
+						"events",
+						"create"
+					]
+				},
+				"description": "Add an event with incorrect fields"
+			},
+			"response": []
+		},
+		{
+			"name": "Logout user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4db05f9c-f3ed-490e-8e35-99020c50909c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://goviralevents.com/users/logout",
+					"protocol": "https",
+					"host": [
+						"goviralevents",
+						"com"
+					],
+					"path": [
+						"users",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add event form FAIL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6d500fe4-d666-4320-9c16-caf59a83aa36",
+						"exec": [
+							"pm.test(\"It should not be possible to add an event without being logged in\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"You must log in to use this function!\");",
+							"});",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://goviralevents.com/events/add",
+					"protocol": "https",
+					"host": [
+						"goviralevents",
+						"com"
+					],
+					"path": [
+						"events",
+						"add"
+					]
+				},
+				"description": "Should not be displayed as user is logged out"
+			},
+			"response": []
+		},
+		{
+			"name": "Log in (admin)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "46d6175b-7420-4523-8fd6-d083a7ebc12c",
+						"exec": [
+							"pm.test(\"Check if flash message says logged in\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Logged in successfully.\");",
+							"});",
+							"",
+							"pm.test(\"Session is set\", function () {",
+							"    pm.expect(pm.cookies.has('goviralevents')).to.be.true;",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "lnuadmin123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://goviralevents.com/users/login",
+					"protocol": "https",
+					"host": [
+						"goviralevents",
+						"com"
+					],
+					"path": [
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "See user profile (admin)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "60bfca4d-7817-436a-923f-f2609c71a59e",
+						"exec": [
+							"",
+							"// Parse HTML and get the id of the event created before",
+							"responseHTML = cheerio(pm.response.text());",
+							"console.log(responseHTML.find('[name=\"testevent\"]').val());",
+							"pm.environment.set('eventId', responseHTML.find('[name=\"testevent\"]').val());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://goviralevents.com/users/profile/postmantester",
+					"protocol": "https",
+					"host": [
+						"goviralevents",
+						"com"
+					],
+					"path": [
+						"users",
+						"profile",
+						"postmantester"
+					]
+				},
+				"description": "See user profile as admin"
+			},
+			"response": []
+		},
+		{
+			"name": "Update event (admin)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d25c1c02-aea3-448c-b179-a2def1ea9dbf",
+						"exec": [
+							"pm.test(\"Flash message indicates it went well\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Updated!\");",
+							"});",
+							"",
+							"pm.test(\"New title appears on page\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"UPDATED EVENT Test postman event\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "UPDATED EVENT Test postman event",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "A little test description",
+							"type": "text"
+						},
+						{
+							"key": "startdate",
+							"value": "Wed Aug 12 2020 10:47:03 GMT+0200 (Central European Summer Time)",
+							"type": "text"
+						},
+						{
+							"key": "enddate",
+							"value": "Thu Aug 13 2020 10:47:03 GMT+0200 (Central European Summer Time)",
+							"type": "text"
+						},
+						{
+							"key": "starthour",
+							"value": "10",
+							"type": "text"
+						},
+						{
+							"key": "startmin",
+							"value": "00",
+							"type": "text"
+						},
+						{
+							"key": "endhour",
+							"value": "22",
+							"type": "text"
+						},
+						{
+							"key": "endmin",
+							"value": "00",
+							"type": "text"
+						},
+						{
+							"key": "country",
+							"value": "Spain",
+							"type": "text"
+						},
+						{
+							"key": "city",
+							"value": "Barcelona",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "cat1",
+							"value": "Informative",
+							"type": "text"
+						},
+						{
+							"key": "cat2",
+							"value": "party",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "{{eventId}}",
+							"type": "text"
+						},
+						{
+							"key": "startyear",
+							"value": "2020",
+							"type": "text"
+						},
+						{
+							"key": "startmonth",
+							"value": "8",
+							"type": "text"
+						},
+						{
+							"key": "startday",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "endyear",
+							"value": "2020",
+							"type": "text"
+						},
+						{
+							"key": "endmonth",
+							"value": "8",
+							"type": "text"
+						},
+						{
+							"key": "endday",
+							"value": "13",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://goviralevents.com/events/{{eventId}}/update",
+					"protocol": "https",
+					"host": [
+						"goviralevents",
+						"com"
+					],
+					"path": [
+						"events",
+						"{{eventId}}",
+						"update"
+					]
+				},
+				"description": "Update the event created by the test user, as admin"
+			},
+			"response": []
+		},
+		{
+			"name": "Change password (admin)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ed99252e-c640-4b9b-b8ca-fbfc9e07b816",
+						"exec": [
+							"pm.test(\"Flash message indicates it went well\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Updated successfully.\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "oldpassword",
+							"value": "12345678",
+							"type": "text"
+						},
+						{
+							"key": "newpassword",
+							"value": "123456789",
+							"type": "text"
+						},
+						{
+							"key": "newpassword2",
+							"value": "123456789",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "postmantester",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://goviralevents.com/users/change",
+					"protocol": "https",
+					"host": [
+						"goviralevents",
+						"com"
+					],
+					"path": [
+						"users",
+						"change"
+					]
+				},
+				"description": "Admin changes password of user"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user (admin)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a961ba90-bffc-4cea-a4f6-9ec74a4f6802",
+						"exec": [
+							"pm.test(\"Flash message indicates it went well\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Deleted successfully.\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "postmantester",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://goviralevents.com/users/delete",
+					"protocol": "https",
+					"host": [
+						"goviralevents",
+						"com"
+					],
+					"path": [
+						"users",
+						"delete"
+					]
+				},
+				"description": "Delete testuser created in this collection and events by testuser, as admin."
+			},
+			"response": []
+		},
+		{
+			"name": "Logout user (admin)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b183880e-cfda-4626-bcce-e9b06d6cb705",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": []
+				},
+				"url": {
+					"raw": "https://goviralevents.com/users/logout",
+					"protocol": "https",
+					"host": [
+						"goviralevents",
+						"com"
+					],
+					"path": [
+						"users",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "See user profile (admin) FAIL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "71a8ff73-5ce1-4068-b759-e752a7063a3d",
+						"exec": [
+							"pm.test(\"Error message to see profile offline\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"You must log in to use this function!\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://goviralevents.com/users/profile/admin",
+					"protocol": "https",
+					"host": [
+						"goviralevents",
+						"com"
+					],
+					"path": [
+						"users",
+						"profile",
+						"admin"
+					]
+				},
+				"description": "Shpuld not display a user profile when logged out"
+			},
+			"response": []
+		},
+		{
+			"name": "Error page",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "64da66de-353f-4a80-a9b9-94760ca4a50f",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://goviralevents.com/xxxx",
+					"protocol": "https",
+					"host": [
+						"goviralevents",
+						"com"
+					],
+					"path": [
+						"xxxx"
+					]
+				},
+				"description": "Error page"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "094d885d-a227-4290-af17-0805e279f95d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "abd603b8-06f0-4164-a6b9-6a854dc83a06",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "b0b2b75a-5f8c-4179-af4f-aefff00fb5f0",
+			"key": "eventId",
+			"value": "",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}

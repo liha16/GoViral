@@ -1,0 +1,31 @@
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+<h1>Register <span class="boldtitle"> now. </span> </h1>
+
+<span class="separator">...</span>
+
+<form action="/users/create" method="POST" name="adduser" id="adduser" onsubmit="return validateRegisterForm()">
+   <p>Username: <br>
+   <input required="true" minlength="1" maxlength="50" type="text" name="username" placeholder="You can only choose characters and numbers." /></p>
+   <p>Name: <br>
+   <input required="true" maxlength="100" type="text" name="name" placeholder="You can only choose characters and numbers." /></p>
+   <p>Surname: <br>
+   <input required="true" maxlength="100" type="text" name="surname" placeholder="You can only choose characters and numbers." /></p>
+   <p>Email: <br>
+   <input required="true" maxlength="200" type="email" name="email" placeholder="Enter your email here" /></p>
+    <p>Password: <br>
+    <input required="true" maxlength="500" minlength="8" type="password" name="password" placeholder="Enter your password here" /></p>
+    <p>Repeat password: <br>
+    <input required="true" maxlength="500" minlength="8" type="password" name="password2" placeholder="Repeat your password" /></p>
+   <div class="g-recaptcha" data-sitekey="6LeIb_MUAAAAAE4w_uqLvA1MKKMoNgqg3R09V1SA"></div>
+<input class="button" type="submit" value="Register" />
+
+</form>
+
+
+<p>When you register on goviral.com you accept the <a target="_blank" title="Read terms and conditions" href="/docs/terms_conditions.pdf"> terms and conditions.</a>
+</p>
+
+
+  <script type="text/javascript" src="/js/validate.min.js"></script>

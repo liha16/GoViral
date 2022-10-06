@@ -1,0 +1,24 @@
+<header>
+  <img title="Go Viral logo" class="headerlogo" src="/img/megapink.png">
+    <a title="Go home" href="/">
+<div class="title">Go Viral <br><span class="titlesmaller">events</span></div></a>
+<nav>
+   
+   <ul>
+    <li><a href="/events">All events</a></li>
+    <li><a href="/events/add">Create an event</a></li>
+    
+    {{#if session.user}}
+    <li><a href="/users/profile/{{session.user}}">My profile</a></li>
+    {{else}}
+    <li><a href="/users/add">Register</a></li>
+    {{/if}} 
+    <li><a href="/users/login">{{#if session.user}}Log out{{else}}Log in{{/if}} </a></li>
+      
+      
+    
+    </ul>
+</nav>
+
+</header>
+

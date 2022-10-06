@@ -1,0 +1,65 @@
+
+<h1> All  <span class="boldtitle">events</span></h1>
+<span class="separator">...</span>
+
+
+{{#if viewData}}
+<ul class="sortlist">
+<li><a title="See events in {{viewData.clientLocation}}" href="/events/location/{{viewData.clientLocation}}"> See events in <span class="capitalize">{{viewData.clientLocation}}</span></a></li>
+<li>
+  Category on page: <select class="categoriesDropdown" id="categoriesDropdown" name="categoriesDropdown">
+    <option selected value="all">all</option>
+    {{#each viewData.categories}}
+    <option value="{{this}}">{{this}}</option>
+    {{/each}}
+  </select>
+
+
+</li>
+<li id="byLikes" ><a title="By likes" href="#">Most likes</a></li>
+<li id="byNew" ><a title="By newest" href="#">Newest</a></li>
+<li><input maxlength="100" type="text" id="searchWord" name="searchWord" placeholder="Search on page"/> <a id="searchword" title="Search under construction" href="#"><i class="fa fa-search fa-fw searchWord" aria-hidden="true"></i></a>
+</li>
+</ul>
+
+
+
+
+<div class="eventlist">
+{{#if viewData.events}}
+
+{{#each viewData.events}}
+
+
+<a class="eventlink" data-cat="{{#each this.categories}}{{this}} {{/each}}" data-created="{{this.created}}" data-val="{{this.likes}}" id="{{this.id}}" title="Read about event" href="/events/{{this.id}}">
+<div class="event">
+    <div class="floatright">
+    {{this.likes}} <i class="fa fa-heart fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="info">{{this.startdate}}, 
+    {{this.starttime}} - {{this.endtime}}</div>
+    <h2>{{this.title}}</h2>
+    <p>{{this.description}}</p>
+    <div class="info">BY {{this.owner}}</div>
+</div>
+</a>
+
+
+{{/each}}
+
+
+<div class="actualCategory"></div>
+{{else}}
+<p>There are no events matching your search criteria...</p>
+{{/if}}
+
+{{#each viewData.pageItems}}
+<a class="page" title="Page {{this}}" href="/events/page/{{this}}">{{this}}</a>
+{{/each}}
+
+
+{{/if}}
+
+
+
+</div>

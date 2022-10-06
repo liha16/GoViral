@@ -1,0 +1,35 @@
+
+{{#if viewData}}
+
+
+<h1>Events : <span class="capitalize boldtitle">{{viewData.searchParam}}</span>  </h1>
+<span class="separator">...</span>
+
+
+
+
+{{#if viewData.events}}
+{{#each viewData.events}}
+<a title="Read about event" href="/events/{{this.id}}">
+<div class="event">
+    <div class="floatright">
+    6 <i class="fa fa-heart fa-2x fa-fw" aria-hidden="true"></i>
+    </div>
+    <div class="info">{{this.startdate}}, 
+    {{this.starttime}} - {{this.endtime}}</div>
+    <h2>{{this.title}}</h2>
+    <p>{{this.description}}</p>
+    <div class="info">{{this.owner}}</div>
+    
+</div>
+</a>
+
+
+{{/each}}
+{{else}}
+<p>There are no events in your area at the moment...</p>
+{{/if}}
+{{/if}}
+<a title="Back" id="back" href="#">
+    <div class="button backlink"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Back
+</div></a>

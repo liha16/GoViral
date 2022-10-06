@@ -1,0 +1,23 @@
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+<h1>Recover <span class="boldtitle"> password. </span> </h1>
+{{#if viewData}}
+<p class="bold">Enter a new password, twice</p>
+
+<form name="recoverPassword" action="/users/recoverPassword" method="POST" onsubmit="return validateRecoverPassword()">
+   <p>Password: <br>
+    <input required="true" maxlength="500" minlength="8" type="password" name="password" placeholder="Enter your password here" /></p>
+    <p>Repeat password: <br>
+    <input required="true" maxlength="500" minlength="8" type="password" name="password2" placeholder="Repeat your password" /></p>
+   <div class="g-recaptcha" data-sitekey="6LeIb_MUAAAAAE4w_uqLvA1MKKMoNgqg3R09V1SA"></div>
+
+<input type="hidden" name="token" value="{{viewData.token}}">
+<input type="hidden" name="username" value="{{viewData.username}}">
+<input class="button" type="submit" value="Send" />
+</form>
+{{/if}}
+
+<p>Do you need help? <a href="/contact">Contact us!</a></p>
+
+<p>Do you need an account? <a href="/users/add">Register here!</a></p>

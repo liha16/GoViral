@@ -1,0 +1,21 @@
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+<h1>Reset <span class="boldtitle"> password. </span> </h1>
+
+<p class="bold">To reset your password, enter your username and your email that you signed up with here. An email will get to you with instructions. The link in the email is valid for 2 hours.</p>
+
+<form name="forgotPassword" action="/users/forgotPassword" method="POST" onsubmit="return validateForgotPassword()">
+   <p>Username: <br><input required="true" type="text" name="username" placeholder="Enter your username here" /></p>
+    <p>Account email:<br> <input required="true" type="email" name="email" placeholder="Enter your email that you signed up with here" /></p>
+<div class="g-recaptcha" data-sitekey="6LeIb_MUAAAAAE4w_uqLvA1MKKMoNgqg3R09V1SA"></div>
+
+<input class="button" type="submit" value="Send" />
+</form>
+
+<p>Do you need help? <a href="/contact">Contact us!</a></p>
+
+<p>Do you need an account? <a href="/users/add">Register here!</a></p>
+
+
+  <script type="text/javascript" src="/js/validate.min.js"></script>

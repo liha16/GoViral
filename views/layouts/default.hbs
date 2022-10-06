@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Events and happening at the same place. Like and share and participate">
+<meta name="author" content="Lisa Veltman">
+<meta charset="utf-8">
+<meta property="og:url"                content="{{#if viewData.id}}https://goviralevents.com/events/{{viewData.id}}{{else}}https://www.goviralevents.com{{/if}}" />
+<meta property="og:type"               content="website" />
+<meta property="og:title"              content="{{#if viewData.title}}{{viewData.title}}{{else}}Share your events and happenings{{/if}}" />
+<meta property="og:description"        content="{{#if viewData.shortDescription}}{{viewData.shortDescription}}{{else}}Events and happening at the same place. Like and share and participate!{{/if}}" />
+<meta property="og:image"              content="https://www.goviralevents.com/img/megaphone.png" />
+  <title> 
+    Go Viral Events {{#if viewData.title}} - {{viewData.title}}{{/if}}
+    </title>
+  <link rel="stylesheet" href="/css/style.min.css">
+  <link rel="stylesheet" href="/css/calendar.min.css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+     
+
+
+
+  {{>header}}
+  <main>
+    {{>flash}}
+  {{{body}}}
+  </main>
+  {{>footer}}
+
+  <script type="text/javascript" src="/js/main.min.js"></script>
+
+</body>
+
+</html>

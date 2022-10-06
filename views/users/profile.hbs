@@ -1,0 +1,96 @@
+{{#if viewData}}
+
+<h1>Profile <span class="boldtitle"> {{viewData.username}}.</span> </h1>
+
+<table class="usertable">
+
+<tr>
+    <th>Username:</th>
+    <td>{{viewData.username}}</td>
+   <td><a data-updateData="username" title="Update" class="floatright updateProfile" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+</td>
+</tr>
+
+<tr>
+    <th>Name:</th>
+    <td>{{viewData.name}}</td>
+    <td><a data-updateData="name" title="Update" class="floatright updateProfile" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+
+</tr>
+
+<tr>
+    <th>Surname:</th>
+    <td>{{viewData.surname}}</td>
+    <td><a title="Update" data-updateData="surname" class="floatright updateProfile" href="#"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+
+</tr>
+<tr>
+    <th>Email:</th>
+    <td>{{viewData.email}}</td>
+    <td></td>
+
+</tr>
+<tr>
+    <th>Member since:</th>
+    <td>{{viewData.created}}</td>
+    <td></td>
+
+</tr>
+</table>
+
+
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&#10005;</span>
+    <h3>Enter a new <span id="changeFormTitle" class="boldtitle"> name. </span> </h3>
+    <p>You can only choose characters and numbers.</p>
+    <form name="updateuser" action="/users/profile/update" method="POST" onsubmit="return validateUpdateForm()">
+   <input required="true" type="text" name="name" placeholder="Enter your new name here" />
+   <input type="hidden" id="changeData" name="typeofchange" value="name">
+   <input type="hidden" name="id" value="{{viewData.id}}">
+    <input class="button" type="submit" id="save" value="Save" />
+</form>
+
+
+  </div>
+
+</div>
+
+
+
+
+<h1> My <span class="boldtitle"> events:</span> </h1>
+
+{{#each viewData.events}}
+
+<div class="event smallevent"><a title="See this event" href="/events/{{this.id}}"><h3>{{this.title}}</h3></a>
+<a title="Update this event" class="floatright smalleventicon" href="/events/{{this.id}}/edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+<a title="Remove this event" class="floatright smalleventicon"  href="/events/{{this.id}}/remove"><i class="fa fa-trash" aria-hidden="true"></i></a>
+</div>
+<input type="hidden" name="testevent" value="{{this.id}}">
+{{/each}}
+
+<hr>
+<p>Create a new event <a title="Create an event" href="/events/add">here!</a></p>
+
+
+<h1>Change <span class="boldtitle"> Password.</span> </h1>
+<a title="Change password" href="/users/change/{{viewData.username}}">
+<div class="button">Change password</div>
+</a>
+
+<h1> Delete <span class="boldtitle"> Account.</span> </h1>
+<a title="Delete your account" href="/users/delete/{{viewData.username}}">
+<div class="button">Delete account</div>
+</a>
+
+
+{{/if}}
+
+<p>Using goviral.com you accept the <a target="_blank" title="Read terms and conditions" href="/docs/terms_conditions.pdf"> terms and conditions.</a>
+</p>
+
+
+
+  <script type="text/javascript" src="/js/validate.min.js"></script>

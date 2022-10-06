@@ -1,0 +1,11 @@
+{{#if viewData}}
+<h1> Delete your <span class="boldtitle"> Account.</span> </h1>
+
+<p>Are you sure that you want to delete your account? All your events will be deleted.</p>
+
+<form action="/users/delete" method="POST">
+    <input class="button" type="submit" value="Delete" />
+    <input type="hidden" name="username" value="{{viewData.username}}">
+</form>
+
+{{/if}}

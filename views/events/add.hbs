@@ -1,0 +1,105 @@
+<script src="/js/calendar.min.js"></script>
+<h1> Add an  <span class="boldtitle">Event.</span></h1>
+
+<span class="separator">...</span>
+
+<form name="eventForm" class="eventForm" action="/events/create" method="POST" onsubmit="return validateCreateEventForm()">
+
+    <h3>Title: *</h3>
+    <input required="true" maxlength="100" type="text" name="title" /> <br>
+
+    <h3>Description: *</h3>
+    <textarea rows="20" cols="50" maxlength="1000" required="true" name="description"></textarea><br>
+
+ 
+  
+    <h2>Start and end date: *</h2>
+
+    <div title="Start date" id="myCalendar" class="vanilla-calendar" style="margin-bottom: 20px"></div>
+    <div title="End date" id="myCalendar2" class="vanilla-calendar" style="margin-bottom: 20px"></div>
+    <input required="true" id="startdate" type="hidden" name="startdate" value=""/> 
+    <input required="true" id="enddate" type="hidden" name="enddate" value=""/> 
+
+
+ <h3>Start time: *</h3>
+    <input required="true" type="number" max="23" min="0" name="starthour" value="10" /> 
+    <input required="true" type="number" max="59" min="0" name="startmin" value="00"/> <br>
+
+
+   <h3>End time: *</h3>
+
+    <input required="true" type="number" max="23" min="0" name="endhour" value="10" /> 
+    <input required="true" type="number" max="59" min="0" name="endmin" value="00"/> <br>
+
+
+
+    <h3>Location:</h3>
+(Global means the event has no specific location.)
+    <p><input type="checkbox" id="globalevent" name="global">  <label for="globalevent"> Make global event</label>
+    </p> 
+    <div id="location">
+    <p>Full Address:
+    <input type="text" maxlength="100" name="address" /> <br></p>
+    <p>City:
+    <input type="text" maxlength="100" name="city"/> <br></p>
+    <p>Country:
+    <input type="text" maxlength="100" name="country"/> <br></p>
+    </div>
+
+    <h3>Category: </h3>
+    <label for="cat1">Choose a category: *</label><br>
+    <select name="cat1" id="cat1" required>
+    <option selected disabled value="">Select</option>
+    <option value="applause">Applause</option>
+    <option value="politics">Politics</option>
+    <option value="donation">Donation</option>
+    <option value="free">Free</option>
+    <option value="informative">Informative</option>
+    <option value="party">Party</option>
+    <option value="spiritual">Spiritual</option>
+    </select>
+
+    <br>
+    <label for="cat2">Choose another category or skip:</label><br>
+    <select name="cat2" id="cat2">
+    <option selected disabled value="">Select</option>
+    <option value="applause">Applause</option>
+    <option value="politics">Politics</option>
+    <option value="donation">Donation</option>
+    <option value="free">Free</option>
+    <option value="informative">Informative</option>
+    <option value="party">Party</option>
+    <option value="spiritual">Spiritual</option>
+    </select>
+    <br>
+<!--
+     <h3>Image url:</h3>
+    <input type="text" maxlength="500"  name="image" /><br>
+-->
+
+    
+    <input class="button" type="submit" value="Publish event" />
+
+</form>
+
+
+<script>            
+            let calendar = new VanillaCalendar({
+                selector: "#myCalendar",
+               // calendarform: "#myCalendar"
+                name: "start",
+                onSelect: (data, elem) => {
+                    //console.log(data, elem)
+                }
+            })
+
+            let calendar2 = new VanillaCalendar({
+                selector: "#myCalendar2",
+                name: "end",
+                onSelect: (data, elem) => {
+                    //console.log(data, elem)
+                }
+            })
+        </script>
+
+  <script type="text/javascript" src="/js/validate.min.js"></script>

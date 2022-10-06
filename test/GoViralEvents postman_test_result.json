@@ -1,0 +1,498 @@
+{
+	"id": "ccedd847-7479-496f-8ef4-0f18a8ed1858",
+	"name": "GoViralEvents production",
+	"timestamp": "2020-06-05T13:05:19.991Z",
+	"collection_id": "1a3854cf-6b20-46ef-9f1c-c77972a5c709",
+	"folder_id": 0,
+	"environment_id": "07b911a8-7b50-4567-8de9-999503b5474d",
+	"totalPass": 18,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "ca49570b-6815-48f4-9d6f-59142ff2473c",
+			"name": "Register new user",
+			"url": "https://goviralevents.com/users/create",
+			"time": 66,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"If flash message says registered": true
+			},
+			"testPassFailCounts": {
+				"If flash message says registered": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				66
+			],
+			"allTests": [
+				{
+					"If flash message says registered": true
+				}
+			]
+		},
+		{
+			"id": "ecf1be88-db11-4440-b2d0-1065ffb7a9d2",
+			"name": "Log in",
+			"url": "https://goviralevents.com/users/login",
+			"time": 117,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Body matches string": true,
+				"Session is set": true
+			},
+			"testPassFailCounts": {
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Session is set": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				117
+			],
+			"allTests": [
+				{
+					"Body matches string": true,
+					"Session is set": true
+				}
+			]
+		},
+		{
+			"id": "3b63bf1e-7723-47fd-9cf6-ad922aac4a1d",
+			"name": "Add event form",
+			"url": "https://goviralevents.com/events/add",
+			"time": 46,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				46
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "7294c288-b63e-4b4a-9f3a-8180c7580cb3",
+			"name": "Add event OK",
+			"url": "https://goviralevents.com/events/create",
+			"time": 68,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"New event added": true
+			},
+			"testPassFailCounts": {
+				"New event added": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				68
+			],
+			"allTests": [
+				{
+					"New event added": true
+				}
+			]
+		},
+		{
+			"id": "5e92065f-43bc-4989-8dd4-29f979208f86",
+			"name": "Add event FAIL",
+			"url": "https://goviralevents.com/events/create",
+			"time": 591,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"New event added": true
+			},
+			"testPassFailCounts": {
+				"New event added": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				591
+			],
+			"allTests": [
+				{
+					"New event added": true
+				}
+			]
+		},
+		{
+			"id": "8e0fea22-eb47-452a-a9e1-4c0144a479be",
+			"name": "Logout user",
+			"url": "https://goviralevents.com/users/logout",
+			"time": 46,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				46
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "e54bef58-e1e6-41c8-b6ce-17e28958aed6",
+			"name": "Add event form FAIL",
+			"url": "https://goviralevents.com/events/add",
+			"time": 48,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"It should not be possible to add an event without being logged in": true,
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"It should not be possible to add an event without being logged in": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				48
+			],
+			"allTests": [
+				{
+					"It should not be possible to add an event without being logged in": true,
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "28018359-af81-490d-936f-53fec186b828",
+			"name": "Log in (admin)",
+			"url": "https://goviralevents.com/users/login",
+			"time": 88,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Check if flash message says logged in": true,
+				"Session is set": true
+			},
+			"testPassFailCounts": {
+				"Check if flash message says logged in": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Session is set": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				88
+			],
+			"allTests": [
+				{
+					"Check if flash message says logged in": true,
+					"Session is set": true
+				}
+			]
+		},
+		{
+			"id": "f3a492d7-d2e5-4645-a52a-fdc9ea12c414",
+			"name": "See user profile (admin)",
+			"url": "https://goviralevents.com/users/profile/postmantester",
+			"time": 87,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				87
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a471daea-c806-4479-80ad-5887096def05",
+			"name": "Update event (admin)",
+			"url": "https://goviralevents.com/events/5eda4233a18893472ac53217/update",
+			"time": 70,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Flash message indicates it went well": true,
+				"New title appears on page": true
+			},
+			"testPassFailCounts": {
+				"Flash message indicates it went well": {
+					"pass": 1,
+					"fail": 0
+				},
+				"New title appears on page": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				70
+			],
+			"allTests": [
+				{
+					"Flash message indicates it went well": true,
+					"New title appears on page": true
+				}
+			]
+		},
+		{
+			"id": "f67878d7-1fbd-4758-9989-f6f39ca91b04",
+			"name": "Change password (admin)",
+			"url": "https://goviralevents.com/users/change",
+			"time": 114,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Flash message indicates it went well": true
+			},
+			"testPassFailCounts": {
+				"Flash message indicates it went well": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				114
+			],
+			"allTests": [
+				{
+					"Flash message indicates it went well": true
+				}
+			]
+		},
+		{
+			"id": "166a72be-c245-468b-ac48-159212807aa1",
+			"name": "Delete user (admin)",
+			"url": "https://goviralevents.com/users/delete",
+			"time": 52,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Flash message indicates it went well": true
+			},
+			"testPassFailCounts": {
+				"Flash message indicates it went well": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				52
+			],
+			"allTests": [
+				{
+					"Flash message indicates it went well": true
+				}
+			]
+		},
+		{
+			"id": "f6da3912-3a6a-4da3-8fa9-f044c5e655ff",
+			"name": "Logout user (admin)",
+			"url": "https://goviralevents.com/users/logout",
+			"time": 52,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				52
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "50da0bfd-a25b-44e7-9adc-82a162cf5e04",
+			"name": "See user profile (admin) FAIL",
+			"url": "https://goviralevents.com/users/profile/admin",
+			"time": 49,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Error message to see profile offline": true
+			},
+			"testPassFailCounts": {
+				"Error message to see profile offline": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				49
+			],
+			"allTests": [
+				{
+					"Error message to see profile offline": true
+				}
+			]
+		},
+		{
+			"id": "a2a62ad7-500d-4ee9-8cb1-811a8e65846b",
+			"name": "Error page",
+			"url": "https://goviralevents.com/xxxx",
+			"time": 45,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status code is 404": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				45
+			],
+			"allTests": [
+				{
+					"Status code is 404": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1539,
+	"collection": {
+		"requests": [
+			{
+				"id": "ca49570b-6815-48f4-9d6f-59142ff2473c",
+				"method": "POST"
+			},
+			{
+				"id": "ecf1be88-db11-4440-b2d0-1065ffb7a9d2",
+				"method": "POST"
+			},
+			{
+				"id": "3b63bf1e-7723-47fd-9cf6-ad922aac4a1d",
+				"method": "GET"
+			},
+			{
+				"id": "7294c288-b63e-4b4a-9f3a-8180c7580cb3",
+				"method": "POST"
+			},
+			{
+				"id": "5e92065f-43bc-4989-8dd4-29f979208f86",
+				"method": "POST"
+			},
+			{
+				"id": "8e0fea22-eb47-452a-a9e1-4c0144a479be",
+				"method": "POST"
+			},
+			{
+				"id": "e54bef58-e1e6-41c8-b6ce-17e28958aed6",
+				"method": "GET"
+			},
+			{
+				"id": "28018359-af81-490d-936f-53fec186b828",
+				"method": "POST"
+			},
+			{
+				"id": "f3a492d7-d2e5-4645-a52a-fdc9ea12c414",
+				"method": "GET"
+			},
+			{
+				"id": "a471daea-c806-4479-80ad-5887096def05",
+				"method": "POST"
+			},
+			{
+				"id": "f67878d7-1fbd-4758-9989-f6f39ca91b04",
+				"method": "POST"
+			},
+			{
+				"id": "166a72be-c245-468b-ac48-159212807aa1",
+				"method": "POST"
+			},
+			{
+				"id": "f6da3912-3a6a-4da3-8fa9-f044c5e655ff",
+				"method": "POST"
+			},
+			{
+				"id": "50da0bfd-a25b-44e7-9adc-82a162cf5e04",
+				"method": "GET"
+			},
+			{
+				"id": "a2a62ad7-500d-4ee9-8cb1-811a8e65846b",
+				"method": "GET"
+			}
+		]
+	}
+}

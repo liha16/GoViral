@@ -1,0 +1,24 @@
+{{#if viewData}}
+<h1> Change <span class="boldtitle"> Password.</span> </h1>
+
+<p>Please enter your old password and your new password twice. It must be minimum 8 characters long.</p>
+
+<form action="/users/change" method="POST">
+
+<p>Old password: <br>
+    <input required="true" minlength="8" type="password" name="oldpassword" placeholder="Enter your old password" /></p>
+
+<p>New password: <br>
+    <input required="true" minlength="8" type="password" name="newpassword" placeholder="New password" /></p>
+
+<p>Repeat new password: <br>
+    <input required="true" minlength="8" type="password" name="newpassword2" placeholder="Repeat your new password" /></p>
+    <input type="hidden" name="username" value="{{viewData.username}}">
+
+    <input class="button" type="submit" value="Save" />
+</form>
+
+
+{{/if}}
+
+  <script type="text/javascript" src="/js/validate.min.js"></script>

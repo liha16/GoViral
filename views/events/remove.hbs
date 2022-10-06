@@ -1,0 +1,16 @@
+<h1>Remove  <span class="boldtitle">Event.</span></h1>
+
+{{#if viewData}}
+<p>Are you sure that you want to remove the event?</p>
+<div class="event smallevent"><h3>{{viewData.title}}</h3></div>
+{{/if}}
+
+<form action="/events/{{viewData.id}}/delete" method="POST">
+    <input class="button floatright" type="submit" value="Remove" />
+    <input type="hidden" name="id" value="{{viewData.id}}" />
+</form>
+
+<a title="Back" id="back" href="#">
+    <div class="button backlink"><i class="fa fa-angle-double-left" aria-hidden="true"></i> Back
+</div></a>
+

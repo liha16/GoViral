@@ -1,0 +1,20 @@
+{{#if viewData.loggedIn}}
+<h1>Log <span class="boldtitle"> out. </span> </h1>
+<form action="/users/logout" method="POST">
+  <input class="button" type="submit" value="Log out" />
+</form>
+
+{{else}}
+<h1>Log <span class="boldtitle"> in. </span> </h1>
+
+<form action="/users/login" method="POST">
+   <p>Username: <br><input required="true" type="text" name="username" placeholder="Enter your username here" /></p>
+    <p>Password:<br> <input required="true" minlength="8" type="password" name="password" placeholder="Enter your password here" /></p>
+    <input class="button" type="submit" value="Login" />
+</form>
+
+
+<p>Do you need an account? <a href="/users/add">Register here!</a></p>
+
+<p><a href="/users/forgot">Forgot password? </a></p>
+{{/if}}
