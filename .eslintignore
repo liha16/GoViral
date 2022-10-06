@@ -1,0 +1,9 @@
+# Ignore test files
+/test/*.js
+
+# Ignore minified files
+*min.js
+*min.css
+
+# Ignore calendar.js (not author)
+/public/js/calendar.js
